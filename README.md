@@ -26,7 +26,7 @@ After review the question, I found it can be dived by two parts. First one is to
 
 The first idea I got is based on the definition of Prime number. 
  
->  *A prime number (or a prime) is a natura lnumber greater than 1 that has no positive divisors other than 1 and itself.* 
+>  *A prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself.* 
 
   So, basically, I can try to divide each number N by all numbers between 2 and N-1 to see if it can be divided evenly. If it can’t we find a prime. The time complexity of this solution is O(n^2).
 
@@ -34,7 +34,7 @@ Then, I found there are actually some ways to improve the algorithm above.
 
  - No even number except 2 can be a prime number. So we don’t need to check if a number can be divided evenly by an even number. This fact can reduce half of number we need to try.
  - If a number is not a prime. It should be a multiplication of at least two numbers. Then one of them must be smaller than equal to sqrt(N). So, we just need to try to divide each number by 2 to sqrt(N) instead of N.
- - After optimized the code by the two ideas above, I find there are still some duplicated division operations. For instance, to check 101, we will try dividends 3,5,7,9, however, 9 is not necessary to be checked since 3 has been checked already. So we just need to try to divide the number by all primes we have found so far.
+ - After optimized the code by the two ideas above, I find there are still some duplicated division operations. For instance, to check 101, we will try dividends 3,5,7,9. However, 9 is not necessary to be checked since 3 has been checked already. So we just need to try to divide the number by all primes we have found so far.
 
 It is implemented in method **get_primes_1** with time complexity **lower than O(n^1.5)**.
 
@@ -63,8 +63,8 @@ In map method code, we divide the candidate numbers into groups and distribute t
 
 ## TDD Test Case
 I created two types of test cases. 
-First group includes numbers and primes of certain number captured from official prime table 
-Second group includes random number N and the Nth prime.  
+- First group includes numbers and primes of certain number captured from official prime table 
+- Second group includes random number N and the Nth prime. It Avoids putting in super long prime lists andkeeps the file more readable.
 
 ## Test Result
 ![image](https://raw.githubusercontent.com/Superbeet/PrimeMultiplicationTable/master/screenshots/screenshot2.PNG)
