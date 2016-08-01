@@ -13,7 +13,6 @@ class PrimeMultiplicationTable(object):
 
 		res = [2]
 		count = 1
-
 		target = 3
 		while count < num:
 			is_prime = True
@@ -41,11 +40,9 @@ class PrimeMultiplicationTable(object):
 			return [2]
 
 		size = self.prime_bound(num)
-
 		is_prime = [True]*size
 		is_prime[0] = False
 		is_prime[1] = False
-
 		sqrt_size = int(math.sqrt(size))+1
 
 		for i in range(2, sqrt_size):
@@ -59,7 +56,6 @@ class PrimeMultiplicationTable(object):
 			if is_prime[j]:
 				res.append(j)
 				count += 1
-
 				if count == num:
 					break
 
@@ -84,19 +80,15 @@ class PrimeMultiplicationTable(object):
 		is_prime[1] = False
 
 		for i in xrange(2, size):
-			
 			if is_prime[i]:
 				res.append(i)
 				count += 1
-
 				if count == num:
 					break
 			
 			for j in xrange(0, count):
-
 				if i*res[j] >= size:
 					break
-
 				is_prime[i*res[j]] = False
 
 				if i%res[j] == 0:
@@ -105,6 +97,9 @@ class PrimeMultiplicationTable(object):
 		return res
 
 	def prime_bound(self, num):
+		"""
+		Approximate upper bound of the value of the nth prime
+		"""
 		if num <= 10:
 			size = 30
 		else:
@@ -118,10 +113,8 @@ class PrimeMultiplicationTable(object):
 
 	def print_row(self, nums, name, width):
 		items = map(str, nums)
-		# row = "%5s  " %(name) + "|"
 		row = '{0: >{width}}  |'.format(name, width = width + 1)
 		for item in items:
-			# row += "%5s" %(item)
 			row += '{0: >{width}}'.format(item, width = width + 1)
 		print row
 
@@ -129,6 +122,9 @@ class PrimeMultiplicationTable(object):
 		print "-"*(length+2)*(width + 1)
 
 	def generate_prime_table(self, num):
+		"""
+		Generate the prime table with dynamic col widths
+		"""
 		if num <= 0 or num is None:
 			print "the table is empty"
 			return
@@ -152,4 +148,4 @@ class PrimeMultiplicationTable(object):
 
 if __name__ == "__main__": 
 	prime_muplication = PrimeMultiplicationTable()
-	prime_muplication.generate_prime_table(10)
+	prime_muplication.generate_prime_table(30)
