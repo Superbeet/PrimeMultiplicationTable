@@ -65,7 +65,7 @@ Here is the result for 30 primes
 
 ####**Handle super large number**  
 Solution 1 and Solution 2(sieve of Eratosthenes) can be scaled on machine clusters by map-reduce mode. 
-In map method code, we divide the candidate numbers into groups and distribute the data to different machines. Then in reduce module, we collect the primes found by each machine and create the result.
+In map method, we divide the candidate numbers into groups and distribute the data to different machines. Then in reduce module, we collect the primes found by each machine and create the result.
 
 ## TDD Test Case
 I created two types of test cases. 
