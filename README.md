@@ -58,6 +58,12 @@ It is implemented in method **get_primes_3** method with time complexity **O(n)*
 We can store prime status in bits rather than bytes (boolean type) to reduce the space complexity. This can also help to reduce the cache miss and improve the performance.
 
 ###Scalability
+The algorithm can work with larger numbers. The table column width will be adjusted dynamically.  
+
+![image](https://raw.githubusercontent.com/Superbeet/PrimeMultiplicationTable/master/screenshots/screenshot3.PNG)
+Here is the result for 30 primes
+
+####**Handle super large number**  
 Solution 1 and Solution 2(sieve of Eratosthenes) can be scaled on machine clusters by map-reduce mode. 
 In map method code, we divide the candidate numbers into groups and distribute the data to different machines. Then in reduce module, we collect the primes found by each machine and create the result.
 
