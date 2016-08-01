@@ -16,8 +16,7 @@ $ python PrimeMultiplicationTable.py
 ```
 
 ## Result
-<Picture>
-
+![image](https://raw.githubusercontent.com/Superbeet/PrimeMultiplicationTable/master/screenshots/screenshot1.PNG)
 
 ## My Thinking Process
 
@@ -58,4 +57,9 @@ It is implemented in method **get_primes_3** method with time complexity **O(n)*
 ###Future Improvement
 We can store prime status in bits rather than bytes (boolean type) to reduce the space complexity. This can also help to reduce the cache miss and improve the performance.
 
+###Scalability
+Solution 1 and Solution 2(sieve of Eratosthenes) can be scaled on machine clusters by map-reduce mode. 
+In map method code, we divide the candidate numbers into groups and distribute the data to different machines. Then in reduce module, we collect the primes found by each machine and create the result.
+
 ## Test
+![image](https://raw.githubusercontent.com/Superbeet/PrimeMultiplicationTable/master/screenshots/screenshot2.PNG)
