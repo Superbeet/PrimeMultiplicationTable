@@ -20,7 +20,7 @@ $ python PrimeMultiplicationTable.py
 
 ## My Thinking Process
 
-After review the question, I found it can be dived by two parts. First one is to find the first N primes, second is to generate the table nicely. And how to realize the first part is crucial here.
+After review the question, I found it can be divided into two parts. First one is to find the first N primes, second is to generate the table nicely. And how to realize the first part is crucial here.
 
 ###Solution 1
 
@@ -44,20 +44,26 @@ After completing the code, I start thinking if there is better way to solve the 
 
 Make a list of all the integers less than or equal to n (and greater than one). Strike out the multiples of all primes less than or equal to the square root of n, then the numbers that are left are the primes.
 
-A challenge here is we need to know the maximum bound of nth prime firstly. To find it out, I use the Prime Number Theorem. The prime distribution is π(N) ~ N / log(N), where π(N) is the prime-counting function and log(N) is the natural logarithm of N. By using this algorithm, we can approximate the nth prime number P(n)~nlogn. Since there will be some deviations (<20%), I expand the table size by 30% to make sure it covers all prime numbers we need.  
+A challenge here is we need to know the upper bound of nth prime firstly. To find it out, I use the Prime Number Theorem. The prime distribution is π(N) ~ N / log(N), where π(N) is the prime-counting function and log(N) is the natural logarithm of N. By using this algorithm, we can approximate the nth prime number P(N)~Nlog(N). Since there will be some deviations (<20%), I expand the table size by 30% to make sure it covers all prime numbers we need.  
 
 It is implemented in method **get_primes_2** with time complexity **O(nloglogn)**.
 
 ###Solution 3
 
-Then, I’m thinking if we can move a little bit further to make it become O(n). In solution 2, some composite numbers are struck out more than once. If we can stipulate that each composite number must be struck out by its smallest prime factor, then we can make should each composite number will only be touched once, which gives us a O(n) time complexity. 
+Then, I’m thinking if we can move a little bit further to make it become O(n). In solution 2, some composite numbers are struck out more than once. If we can stipulate that each composite number must be struck out by its smallest prime factor, then we can say each composite number will only be touched once, which makes the time complexity become O(n) . 
 
-It is implemented in method **get_primes_3** method with time complexity **O(n)**. 
+It is implemented in method **get_primes_3** with time complexity **O(n)**. 
 
 ###Future Improvement
 We can store prime status in bits rather than bytes (boolean type) to reduce the space complexity. This can also help to reduce the cache miss and improve the performance.
 
 ###Scalability
+The algorithm can work with larger numbers. The table column width will be adjusted dynamically.  
+
+![image](https://raw.githubusercontent.com/Superbeet/PrimeMultiplicationTable/master/screenshots/screenshot3.PNG)
+Here is the result for 30 primes
+
+####**Handle super large number**  
 Solution 1 and Solution 2(sieve of Eratosthenes) can be scaled on machine clusters by map-reduce mode. 
 In map method code, we divide the candidate numbers into groups and distribute the data to different machines. Then in reduce module, we collect the primes found by each machine and create the result.
 
