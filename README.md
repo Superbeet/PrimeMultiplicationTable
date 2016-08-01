@@ -10,6 +10,8 @@ Write a program that prints out a multiplication table of the first 10 prime num
 > - Do not use the Prime class from stdlib (write your own code).
 
 ## Execute
+The program running with python2.7 without any third-party library  
+[Python Download Link](https://www.python.org/download/releases/2.7/)
 ```
 $ cd <project directory>
 $ python PrimeMultiplicationTable.py
